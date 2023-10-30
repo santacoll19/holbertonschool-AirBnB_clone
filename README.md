@@ -1,4 +1,4 @@
-![GIF](https://media.giphy.com/media/l0ExtDUaUDoQeTnag/giphy.gif)
+![GIF](https://media.giphy.com/media/l0ExtDUaUDoQeTnag/giphy-downsized-large.gif)
 
 
 # AirBnB Clone Project README
