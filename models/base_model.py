@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """Unittest for BaseModel class"""
-
-import unittest
 import uuid
 from datetime import datetime
-import json
 
 
 class BaseModel:
