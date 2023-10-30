@@ -11,9 +11,9 @@ class BaseModel:
     """BaseModel class"""
     def __init__(self):
         """Initialize variables"""
-        id = uuid.uuid4()
-        created_at = datetime.now()
-        updated_at = datetime.now()
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """ Print a str"""
@@ -25,7 +25,7 @@ class BaseModel:
 
     def to_dict(self):
         """ Return a dictionary """
-        my_dict = self.__dict__.copy()
+        my_dict = dict(self.__dict__)
         my_dict["__class__"] = self.__class__.__name__
         my_dict["created_at"] = self.created_at.isoformat()
         my_dict["updated_at"] = self.updated_at.isoformat()
