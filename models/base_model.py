@@ -9,9 +9,11 @@ import json
 
 class BaseModel:
     """BaseModel class"""
-    id = uuid.uuid4()
-    created_at = datetime.now()
-    updated_at = datetime.now()
+    def __init__(self):
+        """Initialize variables"""
+        id = uuid.uuid4()
+        created_at = datetime.now()
+        updated_at = datetime.now()
 
     def __str__(self):
         """ Print a str"""
