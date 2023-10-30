@@ -1,4 +1,5 @@
-![GIF](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20231030%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20231030T143612Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=296a9c68ca841a3493ea59bdde7a692d772de75cdb331b7c094af6488a4dd625)
+![Data Diagram](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20231030%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20231030T143612Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=296a9c68ca841a3493ea59bdde7a692d772de75cdb331b7c094af6488a4dd625)
+
 
 # AirBnB Clone Project README
 
