@@ -1,33 +1,41 @@
 #!/usr/bin/python3
-"""This module defines a class to manage file storage for hbnb clone"""
+"""FileStorage Module"""
 
 import json
+from os import path
 from models.base_model import BaseModel
 
 
 class FileStorage:
-    """FileStorage class"""
+    """FileStorage class to serialize and deserialize instances"""
     __file_path = "file.json"
     __objects = {}
+    CLASS_DICT = {"BaseModel": BaseModel}
 
     def all(self):
         """Returns the dictionary __objects"""
         return FileStorage.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """Sets in __objects the obj with key <obj class name>.id"""
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """ serializes __objects to the JSON file"""
+        """Serializes __objects to the JSON file"""
         with open(FileStorage.__file_path, 'w') as f:
-            json.dump(FileStorage.__objects, f)
+            dict_obj = {key: value.to_dict()
+                        for key, value in FileStorage.__objects.items()}
+            json.dump(dict_obj, f)
 
     def reload(self):
-        """ deserializes the JSON file to __objects"""
-        try:
+        """Deserializes the JSON file to __objects"""
+        if path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as f:
-                FileStorage.__objects = json.load(f)
-        except FileNotFoundError:
-            pass
+                objs = json.load(f)
+            for key, value in objs.items():
+                cls_name = value["__class__"]
+                cls = FileStorage.CLASS_DICT.get(cls_name)
+                if cls:
+                    instance = cls(**value)
+                    FileStorage.__objects[key] = instance
