@@ -6,6 +6,7 @@ import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models.user import User
+import models
 
 storage = FileStorage()
 storage.reload()
@@ -28,59 +29,76 @@ class HBNBCommand(cmd.Cmd):
         """Empty line + ENTER do not execute anything"""
         pass
 
-    def do_create(self, arg):
-        """Creates a new instance of BaseModel"""
-        if len(arg) == 0:
+    def do_create(self, args):
+        """Create a new instance of a class and save it to the JSON file"""
+        if args == "":
             print("** class name missing **")
-        elif arg != "BaseModel":
-            print("** class doesn't exist **")
         else:
-            new = BaseModel()
-            new.save()
-            print(new.id)
-
-    def do_show(self, arg):
-        """Prints the string representation of an instance"""
-        if len(arg) == 0:
-            print("** class name missing **")
-        elif arg.split()[0] != "BaseModel":
-            print("** class doesn't exist **")
-        elif len(arg.split()) == 1:
-            print("** instance id missing **")
-        else:
-            key = arg.split()[0] + "." + arg.split()[1]
-            if key in storage.all():
-                print(storage.all()[key])
+            args_list = args.split()
+            class_name = args_list[0]
+            if class_name not in models.CLASS_DICT:
+                print("** class doesn't exist **")
             else:
-                print("** no instance found **")
+                new_instance = models.CLASS_DICT[class_name]()
+                new_instance.save()
+                print(new_instance.id)
 
-    def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id"""
-        if len(arg) == 0:
+    def do_show(self, args):
+        """Show the string representation of an instance"""
+        args_list = args.split()
+        if len(args_list) == 0:
             print("** class name missing **")
-        elif arg.split()[0] != "BaseModel":
-            print("** class doesn't exist **")
-        elif len(arg.split()) == 1:
-            print("** instance id missing **")
         else:
-            key = arg.split()[0] + "." + arg.split()[1]
-            if key in storage.all():
-                del storage.all()[key]
-                storage.save()
+            class_name = args_list[0]
+            if class_name not in models.CLASS_DICT:
+                print("** class doesn't exist **")
+            elif len(args_list) == 1:
+                print("** instance id missing **")
             else:
-                print("** no instance found **")
+                instance_id = args_list[1]
+                key = "{}.{}".format(class_name, instance_id)
+                if key not in models.storage.all():
+                    print("** no instance found **")
+                else:
+                    print(models.storage.all()[key])
 
-    def do_all(self, arg):
-        """Prints all string representation of all instances"""
-        if len(arg) == 0:
-            for value in storage.all().values():
-                print(value)
-        elif arg.split()[0] != "BaseModel":
-            print("** class doesn't exist **")
+    def do_destroy(self, args):
+        """Delete an instance based on the class name and id"""
+        args_list = args.split()
+        if len(args_list) == 0:
+            print("** class name missing **")
         else:
-            for key, value in storage.all().items():
-                if key.split(".")[0] == "BaseModel":
-                    print(value)
+            class_name = args_list[0]
+            if class_name not in models.CLASS_DICT:
+                print("** class doesn't exist **")
+            elif len(args_list) == 1:
+                print("** instance id missing **")
+            else:
+                instance_id = args_list[1]
+                key = "{}.{}".format(class_name, instance_id)
+                if key not in models.storage.all():
+                    print("** no instance found **")
+                else:
+                    del models.storage.all()[key]
+                    models.storage.save()
+
+    def do_all(self, args):
+        """Print all string representations of all instances or of a specific class"""
+        args_list = args.split()
+        obj_list = []
+        if len(args_list) == 0:
+            for key in models.storage.all():
+                obj_list.append(str(models.storage.all()[key]))
+            print(obj_list)
+        else:
+            class_name = args_list[0]
+            if class_name not in models.CLASS_DICT:
+                print("** class doesn't exist **")
+            else:
+                for key in models.storage.all():
+                    if key.split(".")[0] == class_name:
+                        obj_list.append(str(models.storage.all()[key]))
+                print(obj_list)
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id"""
