@@ -4,13 +4,15 @@
 import json
 from os import path
 from models.base_model import BaseModel
+from models.user import User
+
 
 
 class FileStorage:
     """FileStorage class to serialize and deserialize instances"""
     __file_path = "file.json"
     __objects = {}
-    CLASS_DICT = {"BaseModel": BaseModel}
+    CLASS_DICT = {"BaseModel": BaseModel, "User": User}
 
     def all(self):
         """Returns the dictionary __objects"""
@@ -39,3 +41,5 @@ class FileStorage:
                 if cls:
                     instance = cls(**value)
                     FileStorage.__objects[key] = instance
+
+
