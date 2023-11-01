@@ -7,7 +7,6 @@ from models.base_model import BaseModel
 from models.user import User
 
 
-
 class FileStorage:
     """FileStorage class to serialize and deserialize instances"""
     __file_path = "file.json"
@@ -41,5 +40,3 @@ class FileStorage:
                 if cls:
                     instance = cls(**value)
                     FileStorage.__objects[key] = instance
-
-
