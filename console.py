@@ -10,6 +10,7 @@ from models.user import User
 storage = FileStorage()
 storage.reload()
 
+
 class HBNBCommand(cmd.Cmd):
     """HBHBCommand class"""
 
@@ -83,23 +84,29 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id"""
-        if len(arg) == 0:
+        args_list = args.split()
+        if len(args_list) == 0:
             print("** class name missing **")
-        elif arg.split()[0] != "BaseModel":
+            return
+        if args_list[0] not in FileStorage.CLASS_DICT:
             print("** class doesn't exist **")
-        elif len(arg.split()) == 1:
+            return
+        if len(args_list) == 1:
             print("** instance id missing **")
-        elif len(arg.split()) == 2:
+            return
+        key = "{}.{}".format(args_list[0], args_list[1])
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+        if len(args_list) == 2:
             print("** attribute name missing **")
-        elif len(arg.split()) == 3:
+            return
+        if len(args_list) == 3:
             print("** value missing **")
-        else:
-            key = arg.split()[0] + "." + arg.split()[1]
-            if key in storage.all():
-                setattr(storage.all()[key], arg.split()[2], arg.split()[3])
-                storage.save()
-            else:
-                print("** no instance found **")
+            return
+        setattr(storage.all()[key], args_list[2], args_list[3].strip("\""))
+        storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
