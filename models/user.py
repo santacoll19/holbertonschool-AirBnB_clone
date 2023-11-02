@@ -10,3 +10,8 @@ class User(BaseModel):
     password = ""
     first_name = ""
     last_name = ""
+
+
+    def __str__(self):
+        """str method\n"""
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"

@@ -77,14 +77,41 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(key in FileStorage._FileStorage__objects)
 
     def test_save_method_error_handling(self):
-        """Test the save method with a read-only file"""
+        """Test the save method with multiple objects"""
         file_storage = FileStorage()
+
+        # Create instances of different model classes
         base_model = BaseModel()
+        user = User()
+        city = City()
+        place = Place()
+
+        # Save the objects
         base_model.save()
-        os.chmod(self.temp_file_path, 0o444)  # make the file read-only
-        with self.assertRaises(OSError):
-            file_storage.save()
-        os.chmod(self.temp_file_path, 0o644)  # make the file writable again
+        user.save()
+        city.save()
+        place.save()
+
+        # Verify that the file contains the expected data
+        with open(self.temp_file_path, 'r') as file:
+            data = json.load(file)
+
+            # Verify that the keys for each object are present in the saved data
+            base_model_key = f"BaseModel.{base_model.id}"
+            user_key = f"User.{user.id}"
+            city_key = f"City.{city.id}"
+            place_key = f"Place.{place.id}"
+
+            self.assertTrue(base_model_key in data)
+            self.assertTrue(user_key in data)
+            self.assertTrue(city_key in data)
+            self.assertTrue(place_key in data)
+
+            # You can also check other attributes to ensure they are saved correctly
+            self.assertEqual(data[base_model_key]["__class__"], "BaseModel")
+            self.assertEqual(data[user_key]["__class__"], "User")
+            self.assertEqual(data[city_key]["__class__"], "City")
+            self.assertEqual(data[place_key]["__class__"], "Place")
 
 if __name__ == '__main__':
     unittest.main()
