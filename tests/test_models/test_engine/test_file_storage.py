@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import unittest
 import os
 import json
@@ -78,6 +79,33 @@ class TestFileStorage(unittest.TestCase):
         file_storage.reload()
         key = f"BaseModel.{base_model.id}"
         self.assertTrue(key in FileStorage._FileStorage__objects)
+
+    def test_all(self):
+        """Test all method"""
+        self.assertIsInstance(self.storage.all(), dict)
+
+    def test_new(self):
+        """Test new method"""
+        self.storage.new(self.obj)
+        key = self.obj.__class__.__name__ + "." + self.obj.id
+        self.assertIn(key, self.storage.all())
+
+    def test_save(self):
+        """Test save method"""
+        self.storage.new(self.obj)
+        self.storage.save()
+        key = self.obj.__class__.__name__ + "." + self.obj.id
+        with open(self.storage._FileStorage__file_path, "r") as f:
+            self.assertIn(key, f.read())
+
+    def test_reload(self):
+        """Test reload method"""
+        self.storage.new(self.obj)
+        self.storage.save()
+        self.storage._FileStorage__objects = {}
+        self.storage.reload()
+        key = self.obj.__class__.__name__ + "." + self.obj.id
+        self.assertIn(key, self.storage.all())
 
 
 if __name__ == '__main__':
