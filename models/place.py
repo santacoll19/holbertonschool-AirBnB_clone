@@ -16,4 +16,8 @@ class Place(BaseModel):
     price_by_night = 0
     latitude = 0.0
     longitude = 0.0
-    amenity_ids = ""
+    amenity_ids = []
+
+    def __str__(self):
+        """str method\n"""
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"

@@ -9,3 +9,7 @@ class Review(BaseModel):
     place_id = ""
     user_id = ""
     text = ""
+
+    def __str__(self):
+        """String representation of the Review instance"""
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
