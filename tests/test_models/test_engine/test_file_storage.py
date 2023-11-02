@@ -10,11 +10,14 @@ from models.review import Review
 from models.state import State
 from models.amenity import Amenity
 
+
 class TestFileStorage(unittest.TestCase):
     def setUp(self):
         self.temp_file_path = "test_file.json"
         FileStorage._FileStorage__file_path = self.temp_file_path
         FileStorage._FileStorage__objects = {}  # Clear __objects for testing
+        self.storage = FileStorage()
+        self.obj = BaseModel()
 
     def tearDown(self):
         if os.path.exists(self.temp_file_path):
@@ -58,14 +61,13 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn(f"BaseModel.{base_model.id}", FileStorage._FileStorage__objects)
 
     def test_save_method(self):
-        """Test the save method"""
-        file_storage = FileStorage()
-        base_model = BaseModel()
-        base_model.save()
-        with open(self.temp_file_path, 'r') as file:
-            data = json.load(file)
-            key = f"BaseModel.{base_model.id}"
-            self.assertTrue(key in data)
+        """Test save method"""
+        self.storage.new(self.obj)
+        self.storage.save()
+        key = self.obj.__class__.__name__ + "." + self.obj.id
+        with open(self.storage._FileStorage__file_path, "r") as f:
+            self.assertIn(key, f.read())
+
 
     def test_reload_method(self):
         """Test the reload method"""
