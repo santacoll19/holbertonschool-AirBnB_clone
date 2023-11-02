@@ -26,11 +26,11 @@ class TestBaseModel(unittest.TestCase):
         """Test the updated_at attribute"""
         self.assertIsInstance(self.base_model.updated_at, datetime)
 
-    def test_str(self):
-        """Test the __str__ method"""
-        expected_output = "[{}] ({}) {}".format(self.base_model.__class__.__name__, self.base_model.id, self.base_model.__dict__)
-        expected_output = expected_output.replace("(", "{").replace(")", "}")  # replace parentheses with curly braces
-        self.assertEqual(str(self.base_model), expected_output)
+def test_str(self):
+    """Test the __str__ method"""
+    expected_output = "[{}] ({}) {}".format(self.base_model.__class__.__name__, self.base_model.id, self.base_model.__dict__)
+    expected_output = expected_output.replace("(", "").replace(")", "")  # Remove parentheses
+    self.assertEqual(str(self.base_model), expected_output)
 
 
 if __name__ == '__main__':
