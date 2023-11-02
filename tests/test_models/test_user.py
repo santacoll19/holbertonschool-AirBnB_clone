@@ -11,7 +11,7 @@ class TestUser(unittest.TestCase):
         self.user2 = User()
         self.user2.email = "user@example.com"
         self.user2.password = "password"
-        self.user2.first_name = "Betty"
+        self.user2.first_name = "HBNB"
         self.user2.last_name = "Holberton"
         self.user2.save()
 
@@ -44,7 +44,7 @@ class TestUser(unittest.TestCase):
             "__class__": type(self.user2).__name__,
             "email": "user@example.com",
             "password": "password",
-            "first_name": "Betty",
+            "first_name": "HBNB",
             "last_name": "Holberton",
             "created_at": self.user2.created_at.isoformat(),
             "updated_at": self.user2.updated_at.isoformat()
