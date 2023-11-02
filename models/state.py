@@ -10,4 +10,4 @@ class State(BaseModel):
 
     def __str__(self):
         """String representation of the State instance"""
-        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
