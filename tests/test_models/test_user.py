@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 
 class TestUser(unittest.TestCase):
     def setUp(self):
-        """ Setup """
+        """ Setup values for testing """
         self.user1 = User()
         self.user2 = User()
         self.user2.email = "user@example.com"
@@ -20,25 +20,25 @@ class TestUser(unittest.TestCase):
         self.assertNotEqual(self.user1.id, self.user2.id)
 
     def test_attributes(self):
-        """ Test attributes """
+        """ Test attributes for User"""
         self.assertTrue(hasattr(self.user1, "email"))
         self.assertTrue(hasattr(self.user1, "password"))
         self.assertTrue(hasattr(self.user1, "first_name"))
         self.assertTrue(hasattr(self.user1, "last_name"))
 
     def test_attributes_default(self):
-        """ Test attributes default """
+        """ Test attributes default for User """
         self.assertEqual(self.user1.email, "")
         self.assertEqual(self.user1.password, "")
         self.assertEqual(self.user1.first_name, "")
         self.assertEqual(self.user1.last_name, "")
 
     def test_inheritance(self):
-        """Test if User class is correctly inheriting from BaseModel"""
+        """Test inheritance from BaseModel"""
         self.assertTrue(issubclass(User, BaseModel))
 
     def test_to_dict(self):
-        """ Test to_dict """
+        """ Test dict for user """
         expected = {
             "id": self.user2.id,
             "__class__": type(self.user2).__name__,
@@ -52,12 +52,12 @@ class TestUser(unittest.TestCase):
         self.assertDictEqual(self.user2.to_dict(), expected)
 
     def test_str(self):
-        """ Test str """
+        """ Test str for the user """
         expected = f"[{type(self.user2).__name__}] ({self.user2.id}) {self.user2.__dict__}"
         self.assertEqual(str(self.user2), expected)
 
     def test_save(self):
-        """ Test save """
+        """ Test save for the user"""
         created_at = self.user1.created_at
         updated_at = self.user1.updated_at
         self.user1.save()
