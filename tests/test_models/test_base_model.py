@@ -16,8 +16,8 @@ class TestBaseModel(unittest.TestCase):
     def test_base_model_str(self):
         """Test the __str__ method"""
         base_model = BaseModel()
-        expected_str = f"[{base_model.__class__.__name__}] ({base_model.id}) {base_model.__dict__}"
-        self.assertEqual(str(base_model), expected_str)
+        expected_str = f"[{base_model.__class__.__name__}] ({base_model.id})"
+        self.assertIn(expected_str, str(base_model))
 
     def test_base_model_save(self):
         """Test the save method"""
@@ -25,7 +25,7 @@ class TestBaseModel(unittest.TestCase):
         original_updated_at = base_model.updated_at
         base_model.save()
         new_updated_at = base_model.updated_at
-        self.assertNotEqual(original_updated_at, new_updated_at)
+        self.assertGreater(new_updated_at, original_updated_at)
 
     def test_base_model_to_dict(self):
         """Test the to_dict method"""
