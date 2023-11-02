@@ -20,11 +20,11 @@ class TestFileStorage(unittest.TestCase):
         self.storage = FileStorage()
         self.obj = BaseModel()
 
-    def tearDown(self):
-        if os.path.exists(self.temp_file_path):
-            os.remove(self.temp_file_path)
-        FileStorage._FileStorage__file_path = "file.json"
-        FileStorage._FileStorage__objects = {}
+def tearDown(self):
+    if hasattr(self, 'temp_file_path') and os.path.exists(self.temp_file_path):
+        os.remove(self.temp_file_path)
+    FileStorage._FileStorage__file_path = "file.json"
+    FileStorage._FileStorage__objects = {}
 
     def test_file_storage_attributes(self):
         """Test FileStorage class attributes"""
@@ -79,6 +79,12 @@ class TestFileStorage(unittest.TestCase):
         file_storage.reload()
         key = f"BaseModel.{base_model.id}"
         self.assertTrue(key in FileStorage._FileStorage__objects)
+
+    def setUp(self):
+        """Set up test environment"""
+        self.storage = FileStorage()
+        self.obj = BaseModel()
+        self.obj.id = "123"
 
     def test_all(self):
         """Test all method"""
