@@ -60,14 +60,15 @@ class TestFileStorage(unittest.TestCase):
         file_storage.new(base_model)
         self.assertIn(f"BaseModel.{base_model.id}", FileStorage._FileStorage__objects)
 
-    def test_save(self):
-        """Test save method"""
-        self.storage.new(self.obj)
+    def test_save_method_for_model(self):
+        """Test the save method for a specific model instance"""
+        base_model = BaseModel()
+        self.storage.new(base_model)
         self.storage.save()
-        key = self.obj.__class__.__name__ + "." + self.obj.id
-        with open(self.storage._FileStorage__file_path, "r") as f:
-            self.assertIn(key, f.read())
-
+        key = f"BaseModel.{base_model.id}"
+        with open(self.temp_file_path, "r") as file:
+            data = json.load(file)
+            self.assertTrue(key in data)
 
     def test_reload_method(self):
         """Test the reload method"""
