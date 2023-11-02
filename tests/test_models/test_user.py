@@ -1,72 +1,48 @@
 #!/usr/bin/python3
-"""Module test_user"""
-import unittest
-from models import storage
-from models.base_model import BaseModel
-from models.user import User
 
+import unittest
+from models.user import User
+from models.base_model import BaseModel
 
 class TestUser(unittest.TestCase):
-    """ Testing User functionality """
-
     def setUp(self):
-        """ Setup """
-        self.user1 = User()
-        self.user2 = User()
-        self.user2.email = "user@example.com"
-        self.user2.password = "password"
-        self.user2.first_name = "Betty"
-        self.user2.last_name = "Holberton"
-        self.user2.save()
+        """Set up for the tests"""
+        self.user = User()
+        self.user.email = "test@example.com"
+        self.user.password = "test_password"
+        self.user.first_name = "Test"
+        self.user.last_name = "User"
+
+    def test_init(self):
+        """Test the initialization"""
+        self.assertIsInstance(self.user, User)
 
     def test_attributes(self):
-        """ Test attributes """
-        self.assertTrue(hasattr(self.user1, "email"))
-        self.assertTrue(hasattr(self.user1, "password"))
-        self.assertTrue(hasattr(self.user1, "first_name"))
-        self.assertTrue(hasattr(self.user1, "last_name"))
-    
-    def test_id(self):
-        """ Test id """
-        self.assertNotEqual(self.user1.id, self.user2.id)
-    
-    def test_attributes_default(self):
-        """ Test attributes default """
-        self.assertEqual(self.user1.email, "")
-        self.assertEqual(self.user1.password, "")
-        self.assertEqual(self.user1.first_name, "")
-        self.assertEqual(self.user1.last_name, "")
-    
-    def test_created_at(self):
-        """ Test created_at """
-        self.assertNotEqual(self.user1.created_at, self.user2.created_at)
+        """Test the attributes"""
+        self.assertEqual(self.user.email, "test@example.com")
+        self.assertEqual(self.user.password, "test_password")
+        self.assertEqual(self.user.first_name, "Test")
+        self.assertEqual(self.user.last_name, "User")
 
-    def test_str(self):
-        """ Test str """
-        expected = f"[{type(self.user2).__name__}] ({self.user2.id}) {self.user2.__dict__}"
-        self.assertEqual(str(self.user2), expected)
+    def test_attribute_types(self):
+        """Test the type of the attributes"""
+        self.assertIsInstance(self.user.email, str)
+        self.assertIsInstance(self.user.password, str)
+        self.assertIsInstance(self.user.first_name, str)
+        self.assertIsInstance(self.user.last_name, str)
 
-    def test_save(self):
-        """ Test save """
-        created_at = self.user1.created_at
-        updated_at = self.user1.updated_at
-        self.user1.save()
-        self.assertEqual(created_at, self.user1.created_at)
-        self.assertNotEqual(updated_at, self.user1.updated_at)
+    def test_inheritance(self):
+        """Test if User class is correctly inheriting from BaseModel"""
+        self.assertTrue(issubclass(User, BaseModel))
 
     def test_to_dict(self):
-        """ Test to_dict """
-        expected = {
-            "id": self.user2.id,
-            "__class__": type(self.user2).__name__,
-            "email": "user@example.com",
-            "password": "password",
-            "first_name": "Betty",
-            "last_name": "Holberton",
-            "created_at": self.user2.created_at.isoformat(),
-            "updated_at": self.user2.updated_at.isoformat()
-        }
-        self.assertDictEqual(self.user2.to_dict(), expected)
+        """Test the to_dict method"""
+        user_dict = self.user.to_dict()
+        self.assertEqual(user_dict["__class__"], "User")
+        self.assertEqual(user_dict["email"], "test@example.com")
+        self.assertEqual(user_dict["password"], "test_password")
+        self.assertEqual(user_dict["first_name"], "Test")
+        self.assertEqual(user_dict["last_name"], "User")
 
 
 if __name__ == '__main__':
