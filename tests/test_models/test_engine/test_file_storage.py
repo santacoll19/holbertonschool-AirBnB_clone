@@ -76,5 +76,15 @@ class TestFileStorage(unittest.TestCase):
         key = f"BaseModel.{base_model.id}"
         self.assertTrue(key in FileStorage._FileStorage__objects)
 
+    def test_save_method_error_handling(self):
+        """Test the save method with a read-only file"""
+        file_storage = FileStorage()
+        base_model = BaseModel()
+        base_model.save()
+        os.chmod(self.temp_file_path, 0o444)  # make the file read-only
+        with self.assertRaises(OSError):
+            file_storage.save()
+        os.chmod(self.temp_file_path, 0o644)  # make the file writable again
+
 if __name__ == '__main__':
     unittest.main()
