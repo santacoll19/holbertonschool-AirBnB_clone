@@ -10,17 +10,19 @@
     padding-right: 30px;
 }
 
-button {
+.filters button {
     font-size: 18px;
-    background-color: #fF5a5f;
+    background-color: #FF545F;
     color: #FFFFFF;
     height: 48px;
     width: 20%;
     border: none;
     border-radius: 4px;
-    margin: auto, 30px, auto, auto;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s;
 }
 
-button:hover {
-    opacity: 90%;
+.filters button:hover {
+    opacity: 0.9;
 }

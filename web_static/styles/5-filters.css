@@ -1,57 +1,53 @@
-.filters{
-    background-color: white;
-	height: 70px;
-	width: 100%;
-	border: 1px solid #DDDDDD;
-	border-radius: 4px;
+.filters {
     display: flex;
     align-items: center;
-    padding-right: 30px;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
 }
 
-.filters button{
-    color: #FFFFFF;
-	font-size: 18px;
-	height: 48px;
-	width: 20%;
-	background-color: #FF5A5F;
-	border: none;
-	border-radius: 4px;
-    margin-left: auto;
-	cursor: pointer;
-    opacity: 1;
-    transition: opacity .3s;
-
-}
-
-.filters button:hover {
-    opacity: 90%;
-}
-
-.locations,
-.amenities{
-    height: 100%;
+.locations, amenities {
+    height: 70%;
     width: 25%;
+    position: relative;
     font-weight: 600;
     display: flex;
     flex-direction: column;
     align-items: left;
-    padding-left: 0px;
+    padding-left: 60px;
 }
 
-.locations {
+.locations{
     border-right: 1px solid #DDDDDD;
 }
 
-.locations h3,
-.amenities h3{
+.locations h3, .amenities h3 {
     font-weight: 600;
-    margin-bottom: 0;
+    margin: 0;
 }
 
-.locations h4,
-.amenities h4{
+.locations h4, .amenities h4 {
     font-weight: 400;
     font-size: 14px;
-    margin-top: 5px;
+    margin: 5px;
+}
+
+.filters button {
+    font-size: 18px;
+    background-color: #FF545F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    margin-left: 150px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.filters button:hover {
+    opacity: 0.9;
 }

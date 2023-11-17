@@ -1,4 +1,3 @@
-/* styles/3-header.css */
 header {
     background-color: white;
     height: 70px;
@@ -9,7 +8,8 @@ header {
     justify-content: flex-start;
     padding-left: 20px;
     background-image: url('../images/logo.png');
+    background-repeat: no- repeat;
     background-size: contain;
-    background-repeat: no-repeat;
     background-position: 20px center;
+
 }
