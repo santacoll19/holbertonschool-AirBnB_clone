@@ -74,15 +74,15 @@ article h2 {
 }
 
 .max_guest {
-    background-image: url('../images/guest.png');
+    background-image: url('../images/icon_group.png');
 }
 
 .number_rooms {
-    background-image: url('../images/rooms.png');
+    background-image: url('../images/icon_bed.png');
 }
 
 .number_bathrooms {
-    background-image: url('../images/bathrooms.png');
+    background-image: url('../images/icon_bath.png');
 }
 
 .user {
