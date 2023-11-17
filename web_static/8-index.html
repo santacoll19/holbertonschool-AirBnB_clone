@@ -1,103 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AirBnB clone</title>
-    <link rel="stylesheet" type="text/css" href="styles/4-common.css">
-    <link rel="stylesheet" type="text/css" href="styles/3-header.css">
-    <link rel="stylesheet" type="text/css" href="styles/3-footer.css">
-    <link rel="stylesheet" type="text/css" href="styles/6-filters.css">
-    <link rel="stylesheet" type="text/css" href="styles/8-places.css">
-    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="stylesheet" href="styles/4-common.css" />
+    <link rel="stylesheet" href="styles/3-footer.css" />
+    <link rel="stylesheet" href="styles/3-header.css" />
+    <link rel="stylesheet" href="styles/6-filters.css" />
+    <link rel="stylesheet" href="styles/8-places.css">
 </head>
+
 <body>
-
-    <header>
-        <!-- Header Content -->
-        <div class="header-logo"></div>
-        <!-- Additional header content (if any) -->
-    </header>
-
+    <header></header>
     <div class="container">
         <section class="filters">
             <div class="locations">
                 <h3>States</h3>
-                <h4>California, Arizona ...</h4>
+                <h4>California, Arizona...</h4>
                 <ul class="popover">
+                    <h3>Arizona:</h3>
                     <li>
-                        <h2>Arizona</h2>
-                        <ul>
-                            <li>Page</li>
-                            <li>Page2</li>
-                            <!-- More cities -->
-                        </ul>
+                        <h4>Tucson</h4>
+                        <h4>Phoenix</h4>
                     </li>
+                    <h3>California:</h3>
                     <li>
-                        <h2>California</h2>
-                        <ul>
-                            <li>San Francisco</li>
-                            <li>Los Altos</li>
-                            <!-- More cities -->
-                        </ul>
+                        <h4>San Francisco </h4>
+                        <h4>Los Angeles</h4>
                     </li>
-                    <!-- More states -->
                 </ul>
             </div>
+
             <div class="amenities">
                 <h3>Amenities</h3>
-                <h4>Internet, Kitchen ...</h4>
+                <h4>Internet, Kitchen, Wifi...</h4>
                 <ul class="popover">
-                    <li>Internet</li>
-                    <li>TV</li>
-                    <li>Kitchen</li>
-                    <li>Iron</li>
-                    <!-- More amenities -->
+                    <li>
+                        <h4>Internet</h4>
+                        <h4>TV</h4>
+                        <h4>Wifi</h4>
+                        <h4>Kitchen</h4>
+                        <h4>Iron</h4>
+                    </li>
                 </ul>
             </div>
             <button>Search</button>
-        </section>
 
+        </section>
         <section class="places">
             <h1>Places</h1>
-            <article class="place">
-                <h2>My Home</h2>
-                <div class="price_by_night">$80</div>
-                <div class="information">
-                    <div class="max_guest"><span>2 Guests</span> <!-- Icon here --></div>
-                    <div class="number_rooms"><span>2 Bedroom</span> <!-- Icon here --></div>
-                    <div class="number_bathrooms"><span>1 Bathroom</span><!-- Icon here --></div>
+            <article>
+                <h2>My home</h2>
+                <div class="price_by_night">
+                    <p>$80</p>
                 </div>
-                <div class="user">Owner: <strong>John Lennon</strong></div>
-                <div class="description">A cozy home with all you need.</div>
-            </article>
-            <article class="place">
-                <h2>Tiny House</h2>
-                <div class="price_by_night">$65</div>
                 <div class="information">
-                    <div class="max_guest"><span>4 Guests</span> <!-- Icon here --></div>
-                    <div class="number_rooms"><span>2 Bedroom</span> <!-- Icon here --></div>
-                    <div class="number_bathrooms"><span>1 Bathroom</span> <!-- Icon here --></div>
+                    <div class="max_guest">
+                        2 guest
+                    </div>
+                    <div class="number_rooms"> 1 Beadroom</div>
+                    <div class="number_bathrooms">1 Bathroom</div>
                 </div>
-                <div class="user">Owner: <strong>Adrienne</strong></div>
-                <div class="description">Perfect for a weekend getaway.</div>
+                <div class="user">
+                    <b>Owner:</b> Jhon Doe
+                </div>
+                <div class="description">
+                    <p> Welcome to your intimate retreat for two, a charming one-bedroom, one-bathroom house designed
+                        for
+                        cozy getaways. The bedroom welcomes you with a plush queen-sized bed and ample natural light,
+                        creating a serene atmosphere. The modern bathroom features a sleek walk-in shower, and the open
+                        living area offers a comfortable space for relaxation, with a thoughtfully equipped kitchenette
+                        for
+                        light meals. Outside, a delightful patio or deck area invites you to enjoy the surrounding
+                        nature.
+                        This thoughtfully designed space balances comfort and intimacy, providing a perfect escape for a
+                        romantic getaway or a peaceful break with a close friend.</p>
+                </div>
+
             </article>
-            <article class="place">
-                <h2>A Suite</h2>
-                <div class="price_by_night">$99</div>
+
+            <article>
+                <h2>Tiny house</h2>
+                <div class="price_by_night">
+                    <p>$65</p>
+                </div>
                 <div class="information">
-                    <div class="max_guest"><span>6 Guests</span> <!-- Icon here --></div>
-                    <div class="number_rooms"><span>3 Bedroom</span> <!-- Icon here --></div>
-                    <div class="number_bathrooms"><span>2 Bathroom</span> <!-- Icon here --></div>
+                    <div class="max_guest">
+                        2 guest
+                    </div>
+                    <div class="number_rooms"> 1 Beadroom</div>
+                    <div class="number_bathrooms">1 Bathroom</div>
                 </div>
-                <div class="user">Owner: <strong>Bob Johnson</strong></div>
-                <div class="description">Luxurious and spacious.</div>
+                <div class="user">
+                    <b>Owner:</b> Jhon Doe
+                </div>
+                <div class="description">
+                    <p> Welcome to your intimate retreat for two, a charming one-bedroom, one-bathroom house designed
+                        for
+                        cozy getaways. The bedroom welcomes you with a plush queen-sized bed and ample natural light,
+                        creating a serene atmosphere. The modern bathroom features a sleek walk-in shower, and the open
+                        living area offers a comfortable space for relaxation, with a thoughtfully equipped kitchenette
+                        for
+                        light meals. Outside, a delightful patio or deck area invites you to enjoy the surrounding
+                        nature.
+                        This thoughtfully designed space balances comfort and intimacy, providing a perfect escape for a
+                        romantic getaway or a peaceful break with a close friend.</p>
+                </div>
             </article>
-            <!-- More places as needed -->
+            <article>
+                <h2>A suite</h2>
+                <div class="price_by_night">
+                    <p>$190</p>
+                </div>
+                <div class="information">
+                    <div class="max_guest">
+                        10 guest
+                    </div>
+                    <div class="number_rooms"> 1 Beadroom</div>
+                    <div class="number_bathrooms">1 Bathroom</div>
+                </div>
+                <div class="user">
+                    <b>Owner:</b> Jhon Doe
+                </div>
+                <div class="description">
+                    <p> Welcome to your intimate retreat for two, a charming one-bedroom, one-bathroom house designed
+                        for
+                        cozy getaways. The bedroom welcomes you with a plush queen-sized bed and ample natural light,
+                        creating a serene atmosphere. The modern bathroom features a sleek walk-in shower, and the open
+                        living area offers a comfortable space for relaxation, with a thoughtfully equipped kitchenette
+                        for
+                        light meals. Outside, a delightful patio or deck area invites you to enjoy the surrounding
+                        nature.
+                        This thoughtfully designed space balances comfort and intimacy, providing a perfect escape for a
+                        romantic getaway or a peaceful break with a close friend.</p>
+                </div>
+            </article>
+
+
         </section>
     </div>
-
-    <footer>
-        Holberton School
-    </footer>
-
+    <footer>Holberton School</footer>
 </body>
+
 </html>
