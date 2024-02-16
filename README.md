@@ -50,7 +50,7 @@ Throughout the project, you'll have the opportunity to learn various concepts an
 - Unittest: Collaborate on test cases to ensure the reliability and functionality of the code.
 - Python packages: Understand the concept of organizing code into packages.
 - Serialization/Deserialization: Learn how to convert objects into serializable data and vice versa.
-- *args and **kwargs: Explore how to work with dynamic function arguments.
+- \*args and \*\*kwargs: Explore how to work with dynamic function arguments.
 - datetime: Manipulate date and time information.
 - And more to come!
 
@@ -97,9 +97,9 @@ Persistency is crucial for a web application to retain data across multiple prog
 
 To store instances of objects in a file, they are converted into JSON format, a standard representation of objects. JSON serialization makes it easy to share data with other developers, as it is human-readable and can be understood by other languages or programs.
 
-## *args and **kwargs
+## \*args and \*\*kwargs
 
-These concepts allow dynamic handling of function arguments. *args represents anonymous arguments as a tuple, while **kwargs represents named arguments as a dictionary. You can use these concepts to create flexible and dynamic functions.
+These concepts allow dynamic handling of function arguments. \*args represents anonymous arguments as a tuple, while \*\*kwargs represents named arguments as a dictionary. You can use these concepts to create flexible and dynamic functions.
 
 ## datetime
 
@@ -108,6 +108,11 @@ The datetime module is used to manipulate date and time information in Python. Y
 ## Data Diagram
 
 A data diagram detailing the structure and relationships of the project's data models is available to provide a clear overview of how data is organized and interconnected.
+
 ```
 
 Please note that the last line "A data diagram detailing the structure and relationships of the project's data models is available to provide a clear overview of how data is organized and interconnected." seems to be incomplete. You might want to add a link to the data diagram or provide more information about where it can be found.
+
+## Authors
+Joshua Santiago, Kelvin Santana
+```
